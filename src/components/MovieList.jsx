@@ -12,7 +12,7 @@ export default function MovieList() {
   const fetchMovies = async (searchTerm, page = 1) => {
     try {
       const url =
-        searchTerm.length > 3
+        searchTerm.length > 1
           ? `https://api.themoviedb.org/3/search/movie?api_key=${
               import.meta.env.PUBLIC_API_KEY
             }&query=${searchTerm}&with_genres=${comedyGenreId}&page=${page}`
@@ -41,7 +41,7 @@ export default function MovieList() {
   const handleInputChange = async (e) => {
     const newInput = e.target.value;
     setInput(newInput);
-    if (newInput.length > 3) {
+    if (newInput.length > 1) {
       setPage(1); // Reset page to 1
       setMovieList([]); // Clear previous list
       movieIds.current.clear();
@@ -52,7 +52,7 @@ export default function MovieList() {
   useEffect(() => {
     if (!input) {
       fetchMovies("", page);
-    } else if (input.length > 3) {
+    } else if (input.length > 1) {
       handleInputChange({ target: { value: input } });
     }
   }, [page, input]);
