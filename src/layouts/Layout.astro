@@ -1,0 +1,159 @@
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+<style is:global>
+  @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+  body {
+    font-family: "Roboto", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .movie-item {
+    flex: 1 1 calc(20% - 16px);
+    margin: 8px;
+    text-align: center;
+  }
+
+  .movie-item img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 8px;
+  }
+
+  .movie-item h2 {
+    font-size: 16px;
+    margin: 8px 0;
+  }
+
+  .movie-item .genres,
+  .movie-item .rating {
+    font-size: 14px;
+    color: #555;
+  }
+
+  .movie-item .rating .fa-star {
+    color: #f39c12;
+    margin-right: 4px;
+  }
+
+  .container {
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .scroll-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .movie-list {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 16px;
+    padding: 8px 0;
+    flex-wrap: nowrap;
+  }
+
+  .movie-item {
+    flex: 0 0 auto;
+    width: 400px;
+    text-align: center;
+  }
+
+  .movie-item img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 8px;
+  }
+
+  .movie-item h2 {
+    font-size: 16px;
+    margin: 8px 0;
+  }
+
+  .movie-item .genres,
+  .movie-item .rating {
+    font-size: 14px;
+    color: #555;
+  }
+
+  .movie-item .rating .fa-star {
+    color: #f39c12;
+    margin-right: 4px;
+  }
+
+  .search-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  .search-icon {
+    position: absolute;
+    color: #000000;
+    font-size: 16px;
+    left: 1.5rem;
+  }
+
+  .search-input {
+    width: 100%;
+    padding: 10px 20px 10px 50px; /* Adjusted padding-left to move text further left */
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+    color: #000000;
+  }
+
+  .scroll-button {
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    font-size: 24px;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1;
+  }
+
+  .scroll-button.left {
+    left: 0;
+  }
+
+  .scroll-button.right {
+    right: 0;
+  }
+</style>

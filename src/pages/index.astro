@@ -1,0 +1,90 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Header from "@components/Header.astro";
+import MovieList from "../components/MovieList.jsx";
+---
+
+<Layout title="Welcome to Astro.">
+  <Header />
+
+  <div class="container">
+    <MovieList client:load />
+  </div>
+</Layout>
+
+<script></script>
+
+<style>
+  .container {
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .scroll-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .movie-list {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 16px;
+    padding: 8px 0;
+    flex-wrap: nowrap;
+  }
+
+  .movie-item {
+    flex: 0 0 auto;
+    width: 200px;
+    text-align: center;
+  }
+
+  .movie-item img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 8px;
+  }
+
+  .movie-item h2 {
+    font-size: 16px;
+    margin: 8px 0;
+  }
+
+  .movie-item .genres,
+  .movie-item .rating {
+    font-size: 14px;
+    color: #555;
+  }
+
+  .movie-item .rating .fa-star {
+    color: #f39c12;
+    margin-right: 4px;
+  }
+
+  .scroll-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    font-size: 24px;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1;
+  }
+
+  .scroll-button.left {
+    left: 0;
+  }
+
+  .scroll-button.right {
+    right: 0;
+  }
+</style>
