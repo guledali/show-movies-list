@@ -92,6 +92,7 @@ export default function MovieList() {
         <button
           onClick={() => scrollMovieList("left")}
           className="scroll-button left"
+          style={{ display: movieList.length < 4 ? "none" : "" }}
         >
           &#10094;
         </button>
@@ -103,6 +104,7 @@ export default function MovieList() {
         <button
           onClick={() => scrollMovieList("right")}
           className="scroll-button right"
+          style={{ display: movieList.length < 4 ? "none" : "" }}
         >
           &#10095;
         </button>
