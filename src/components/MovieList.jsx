@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import MovieItem from "./MovieItem.jsx";
 
-const APIKEY = "27cfec6c9eb8080cb7d8025ba420e2d7";
-
 export default function MovieList() {
   const [movieList, setMovieList] = useState([]);
   const [page, setPage] = useState(1);
@@ -15,8 +13,12 @@ export default function MovieList() {
     try {
       const url =
         searchTerm.length > 3
-          ? `https://api.themoviedb.org/3/search/movie?api_key=${APIKEY}&query=${searchTerm}&with_genres=${comedyGenreId}&page=${page}`
-          : `https://api.themoviedb.org/3/discover/movie?api_key=${APIKEY}&with_genres=${comedyGenreId}&page=${page}`;
+          ? `https://api.themoviedb.org/3/search/movie?api_key=${
+              import.meta.env.PUBLIC_API_KEY
+            }&query=${searchTerm}&with_genres=${comedyGenreId}&page=${page}`
+          : `https://api.themoviedb.org/3/discover/movie?api_key=${
+              import.meta.env.PUBLIC_API_KEY
+            }&with_genres=${comedyGenreId}&page=${page}`;
       const response = await fetch(url);
       if (!response.ok) {
         throw new Error(`Failed to fetch movies: ${response.statusText}`);
